@@ -1,26 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="chat__window">
+    <div class="user">
+      <Header :src="'user1'" :name="'Александр'" :status="'Онлайн'" />
+      <Main :sendId="1" :message="message" />
+      <Type :sendId="1" @new-mess="newMess" />
+    </div>
+    <div class="user">
+      <Header :src="'user2'" :name="'Евгений'" :status="'Онлайн'" />
+      <Main :sendId="2" :message="message" />
+      <Type :sendId="2" @new-mess="newMess" />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "@/components/Header.vue";
+import Main from "@/components/Main.vue";
+import Type from "@/components/Type.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    Main,
+    Type,
+  },
+  data() {
+    return {
+      message: [],
+    };
+  },
+  created() {
+    const messStorage = localStorage.message
+      ? JSON.parse(localStorage.message)
+      : [];
+    this.message = messStorage;
+  },
+  methods: {
+    newMess(mess) {
+      this.message.push(mess);
+      localStorage.message = JSON.stringify(this.message);
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
