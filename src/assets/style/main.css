@@ -70,13 +70,14 @@ body {
     padding: 5px 10px;
     flex-direction: column;
 }
+
 .chatItem__text img {
     width: 100%;
     border-radius: 13px;
 }
-.chatItem-body.photo {
-    
-}
+
+.chatItem-body.photo {}
+
 .chatItem__body.send {
     justify-content: end;
 }
@@ -223,8 +224,7 @@ body {
     border: none;
     position: relative;
     padding: 8px 0 9px 16px;
-    /* border-bottom: 2px; */
-    border: 1px solid #1C1B1F;
+    border-bottom: 2px solid #1C1B1F;
 }
 
 .window__from input::placeholder {
@@ -245,6 +245,7 @@ textarea {
     outline: none;
     border: none;
     background: transparent;
+    resize: none;
 }
 
 .window__from label span {
@@ -257,6 +258,7 @@ textarea {
     justify-content: right;
     margin: 24px 24px 24px 8px;
 }
+
 .btn {
     cursor: pointer;
     transition: 300ms;
@@ -276,6 +278,7 @@ textarea {
     letter-spacing: 0.1px;
     text-transform: uppercase;
 }
+
 .btn.red {
     color: #CF1B1B;
 }
